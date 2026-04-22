@@ -3,6 +3,8 @@ import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@/utils/slugify";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
+import { SITE } from "@/config";
+
 
 type Props = {
   variant?: "h2" | "h3";
@@ -29,5 +31,5 @@ const { title, description, ...props } = data;
     </Heading>
   </a>
   <Datetime {...props} />
-  <p>{description}</p>
+  {SITE.showPostDescription && description && <p>{description}</p>}
 </li>
